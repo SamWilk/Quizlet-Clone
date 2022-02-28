@@ -41,6 +41,7 @@ export default async function handler(
         res.status(500).json({ Error: error.message });
       }
     case "DELETE":
+      //Make sure to delete the relations in the other table as well later
       try {
         const { id } = req.query;
         const remove = await pool.query("DELETE FROM studyset WHERE id = $1", [
@@ -49,7 +50,7 @@ export default async function handler(
         res.status(200).json(`${remove.command} id: ${id} from studyset TABLE`);
       } catch (error) {}
     default:
-      res.setHeader("Allow", ["GET", "PUT"]);
+      res.setHeader("Allow", ["GET", "PUT", "DELETE"]);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
 }
