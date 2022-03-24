@@ -11,7 +11,7 @@ app.use(express.json());
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse
 ) {
   const method = req.method;
   switch (method) {
@@ -31,7 +31,6 @@ export default async function handler(
         console.error(error.message);
       }
       break;
-    //Adding Commit here
     //Creating a new study set
     case "POST":
       try {
