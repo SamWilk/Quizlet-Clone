@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import pool from "../../api/db";
 
-//Middle wire
+//Middle ware
 const app = express();
 app.use(cors);
 app.use(express.json());
